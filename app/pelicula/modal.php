@@ -1,5 +1,5 @@
 <div class="modal fade text-black" id="newModal" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg shadow-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Agregar registro</h5>
@@ -12,8 +12,8 @@
                     <div class="mb-3">
                         <label for="name" class="form-label">
                             Nombre:
-                            <input type="text" name="name" id="name" required class="form-control">
                         </label>
+                        <input type="text" name="name" id="name" required class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">
@@ -31,10 +31,10 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="genero" class="form-label">Poster:</label>
+                        <label for="poster" class="form-label">Poster:</label>
                         <input type="file" name="poster" id="poster"  class="form-control" accept="image/jpeg">
                     </div>
-                    <div>   
+                    <div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>

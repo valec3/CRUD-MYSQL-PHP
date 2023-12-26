@@ -13,5 +13,4 @@ if($conn->query($query)){
 }else{
     echo "";
 }
-
 ?>

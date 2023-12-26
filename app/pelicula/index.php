@@ -1,5 +1,11 @@
 <?php
 require_once("../config/database.php");
+
+$sqlGetDataMovies = "SELECT p.id, p.nombre, p.descripcion, g.nombre AS genero 
+                    FROM pelicula AS p 
+                    INNER JOIN genero AS g 
+                    ON p.id_genero = g.id";
+$dataMovies = $conn->query($sqlGetDataMovies);
 ?>
 
 <!DOCTYPE html>
@@ -30,17 +36,31 @@ require_once("../config/database.php");
                 Crear 
             </a>
         </div>
-        <table class="table table-sm table-striped table-hover table-primary mt-4" >
+        <table class="table table-hover table-striped table-dark mt-4 table-primary">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>Nro</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Genero</th>
+                    <th>Poster</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-
+                <?php while($rMovie = $dataMovies->fetch_assoc()){ ?>
+                    <tr class="table-ligth">
+                        <td><?php echo $rMovie["id"]; ?></td>
+                        <td><?php echo $rMovie["nombre"]; ?></td>
+                        <td><?php echo $rMovie["descripcion"]; ?></td>
+                        <td><?php echo $rMovie["genero"]; ?></td>
+                        <td></td>
+                        <td>
+                            <button class="btn btn-warning fw-bold">Editar</button>
+                            <button class="btn btn-danger fw-bold">Borrar</button>
+                        </td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </main>
