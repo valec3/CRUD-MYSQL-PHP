@@ -10,6 +10,7 @@ $query = "INSERT INTO pelicula (nombre,descripcion,id_genero,fecha_alta)
     VALUES ('$nombre','$description',$genero,NOW())";
 if($conn->query($query)){
     header("Location: index.php");
+    // ALERT TOAST
 }else{
     echo "";
 }

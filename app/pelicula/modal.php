@@ -1,9 +1,9 @@
 <div class="modal fade text-black" id="newModal" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg shadow-lg" role="document">
+    <div class="modal-dialog modal-lg shadow-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Agregar registro</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" data-bs-target="#newModal">
                         <span aria-hidden="true">&times;</span>
                     </button>
             </div>
@@ -35,7 +35,7 @@
                         <input type="file" name="poster" id="poster"  class="form-control" accept="image/jpeg">
                     </div>
                     <div>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </form>
@@ -45,10 +45,5 @@
 </div>
 
 <script>
-    $('#exampleModal').on('show.bs.modal', event => {
-        var button = $(event.relatedTarget);
-        var modal = $(this);
-        // Use above variables to manipulate the DOM
-        
-    });
+    
 </script>
