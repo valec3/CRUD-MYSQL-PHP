@@ -1,6 +1,6 @@
 <?php
 require_once("../config/database.php");
-
+session_start();
 $sqlGetDataMovies = "SELECT p.id, p.nombre, p.descripcion, g.nombre AS genero 
                     FROM pelicula AS p 
                     INNER JOIN genero AS g 
@@ -62,26 +62,31 @@ $dataMovies = $conn->query($sqlGetDataMovies);
                                 <i class="fa fa-pen-to-square"></i>
                                 Editar
                             </button>
-                            <button class="btn btn-danger fw-bold" >
-                                <i class="fa fa-trash"></i>
-                                Eliminar
-                            </button>
-                        </td>
-                    </tr>
+                            <button class="btn btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id = "<?php echo $rMovie["id"]; ?>">
+                                    <i class="fa fa-trash"></i>
+                                    Eliminar
+                                </button>
+                            </td>
+                        </tr>
                 <?php } ?>
             </tbody>
         </table>
     </main>
     <footer>
-        <button type="button" class="btn btn-primary" id="customToast">Show live toast</button>
-        <div class="toast align-items-center text-white bg-primary border-0 position-fixed top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" id="customToast">
-            <div class="d-flex">
-                <div class="toast-body">
-                    Hello, world! This is a toast message.
+        <?php  if(isset($_SESSION['message'])){ ?>
+            <div class="toast-container position-absolute top-0 end-0 p-3">
+                <div class="toast align-items-center bg-success text-light show <?php echo 'bg-'.$_SESSION['message_type']?>" role="alert" aria-live="assertive" aria-atomic="true" id="toast" data-bs-animation="true" data-bs-delay="2000"> 
+                    <div class="d-flex">
+                        <h3 class="toast-body fw-bold fs-6 my-0">
+                            <?php echo $_SESSION['message']; ?>
+                        </h3>
+                        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
                 </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-        </div>
+        <?php 
+        unset($_SESSION['message']);
+    } ?>
     </footer>
 
 
@@ -89,10 +94,8 @@ $dataMovies = $conn->query($sqlGetDataMovies);
 
 
 
+    <?php
 
-
-    <?php 
-    
     $queryGetGeneros = "SELECT id, nombre FROM genero";
     $resGetGeneros = $conn->query($queryGetGeneros);
     if (!$resGetGeneros) {
@@ -105,6 +108,7 @@ $dataMovies = $conn->query($sqlGetDataMovies);
     <?php include('./modal.php'); ?>
     <?php $resGetGeneros->data_seek(0); ?>
     <?php include('./editModal.php'); ?>
+    <?php include('./deleteModal.php'); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../../assets/js/app.js"></script>
 </body>

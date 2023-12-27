@@ -14,6 +14,7 @@ WHERE id = '$id'";
 $resUpdateMovie = $conn->query($queryUpdateMovie);
 if ($resUpdateMovie) {
     header("Location: index.php");
+    $_SESSION['message'] = "Registro actualizado correctamente";
 } else {
     echo "Error al actualizar la pelicula: " . mysqli_error($conn);
 }

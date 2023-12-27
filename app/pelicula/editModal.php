@@ -56,9 +56,6 @@
         const btnClicked = event.relatedTarget;
         const id = btnClicked.getAttribute('data-bs-id');
         const dataRegister = document.querySelectorAll(`tr[register-id="${id}"] td`);
-        // editModal.querySelector('#name').value = dataRegister[1].innerHTML;
-        // editModal.querySelector('#description').value = dataRegister[2].innerHTML;
-
         const urlGetMovie = `getMovie.php`;
         const getdataMovie = async ()=>{
             const response = await fetch(`${urlGetMovie}?id=${id}`);
