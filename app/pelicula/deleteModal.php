@@ -12,7 +12,7 @@
             </div>
             <div class="modal-body">
                 <input type="number" name="id" id="id" class="d-none">
-                <div class="container-fluid text-center fw-bold">
+                <div class="container-fluid text-center fw-bold" id="data-show-delete">
                     ¿Está seguro de eliminar el registro?
                 </div>
             </div>
@@ -30,5 +30,6 @@
         const btnClicked = event.relatedTarget;
         const id = btnClicked.getAttribute('data-bs-id');
         deleteModal.querySelector('#id').value = id;
+        document.querySelector("#data-show-delete").innerHTML = "¿Está seguro de eliminar el registro con id: " + id + "?";
     });
 </script>

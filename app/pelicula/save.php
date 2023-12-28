@@ -22,13 +22,16 @@ if($conn->query($query)){
         $_SESSION['message'] = "Formato no permitido";
         return;
     }
+
     $path = "/posters/";
     $path = $path . basename($_FILES['poster']['name']);
+    $format = explode(".",$path);
+    // echo $format[1];
     if(!file_exists("posters")){
         mkdir("posters");
     }
 
-    if(!move_uploaded_file($_FILES['poster']['tmp_name'],"./posters/".$id.".jpg")){
+    if(!move_uploaded_file($_FILES['poster']['tmp_name'],"./posters/".$id.".".$format[1])){
         $_SESSION['message'] = "Error al subir el archivo";
         return;
     }
