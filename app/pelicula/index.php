@@ -56,7 +56,7 @@ $dataMovies = $conn->query($sqlGetDataMovies);
                         <td><?php echo $rMovie["nombre"]; ?></td>
                         <td><?php echo $rMovie["descripcion"]; ?></td>
                         <td><?php echo $rMovie["genero"]; ?></td>
-                        <td><img width="100" src="<?php echo './posters/'.$rMovie["id"].'.jpg'; ?>" alt="poster pelicula"></td>
+                        <td><img width="100" src="<?php echo './posters/'.$rMovie["id"].'.jpg?n='.time(); ?>" alt="poster pelicula"></td>
                         <td>
                             <button class="btn btn-warning fw-bold" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-id = "<?php echo $rMovie["id"]; ?>">
                                 <i class="fa fa-pen-to-square"></i>

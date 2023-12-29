@@ -37,7 +37,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="poster" class="form-label">Poster:</label>
-                        <input type="file" name="poster" id="poster"  class="form-control" accept="image/jpeg">
+                        <img src="" alt="" id="img-poster" width="100" style="display: block;">
+                        <input type="file" name="poster-update" id="poster-update"  class="form-control" accept="image/jpg">
                     </div>
                     <div>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -67,6 +68,18 @@
         editModal.querySelector('#name').value = dataMovies.nombre;
         editModal.querySelector('#description').value = dataMovies.descripcion;
         editModal.querySelector('#genero').value = dataMovies.id_genero;
+        editModal.querySelector('#img-poster').src = `./posters/${id}.jpg?n=${Math.random()}`;
+        console.log('Modal abierto');
+    })
+    console.log("Script cargado");
+
+    const inputPoster = document.querySelector('#poster-update');
+    console.log(inputPoster);
+    inputPoster.addEventListener('input',function(event){
+        console.log("Evento change disparado");
+        console.log(event.target.files[0]);
+        const imgPoster = document.querySelector('#img-poster');
+        imgPoster.src = URL.createObjectURL(event.target.files[0]);
     })
 </script>
 
